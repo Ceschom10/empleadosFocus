@@ -8,8 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Button } from "@material-ui/core";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
