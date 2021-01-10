@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 //import Example from './Containers/ExampleJSX/Example';
 //import Example3, { Example1, Example2, Wrapper } from './Containers/ExampleJSX';

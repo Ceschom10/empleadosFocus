@@ -4,10 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './Firebase/firebase'
+import { Auth0Provider } from '@auth0/auth0-react'
+
+const domain = 'dev-focus-react.us.auth0.com';
+const clientId = 'YewUtX1hoMBL71Ch0muF2FRhZVU5705j';
+const redirectUri = window.location.origin
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider domain={domain} clientId={clientId} redirectUri={redirectUri}>
+      <App/>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
   
