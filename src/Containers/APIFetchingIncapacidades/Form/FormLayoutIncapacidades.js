@@ -5,6 +5,9 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,20 +34,22 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} >
           <Paper className={classes.paper}>
-            <p>
+          <p>
               <InputLabel htmlFor="input-with-icon-adornment">
-                CODIGO EMPLEADO
+                ID INCAPACIDAD
               </InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
-                type="number"
-                name="codigo"
-                placeholder="codigo"
+                type="text"
+                name="id"
+                readOnly="readOnly"
+                placeholder="fin de incapacidad"
                 ref={register()}
               />
             </p>
+            
 
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
@@ -64,43 +69,13 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
               </InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
-                type="text"
+                type="date"
                 name="inicioIncapacidad"
                 placeholder="inicio de incapacidad"
+                className="fecha"
                 ref={register()}
               />
             </p>
-
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                DIAS DE COBERTURA
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="number"
-                name="diasCobertura"
-                placeholder="dias de cobertura"
-                ref={register()}
-              />
-            </p>
-          </Paper>
-        </Grid>
-        
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                FECHA INGRESO
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="text"
-                name="fechaIngreso"
-                placeholder="fecha de ingreso"
-                ref={register()}
-              />
-            </p>
-
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
                 DOCTOR
@@ -113,26 +88,85 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 ref={register()}
               />
             </p>
+
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+          <p>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                CODIGO EMPLEADO
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="number"
+                name="codigo"
+                placeholder="codigo"
+                ref={register()}
+              />
+            </p>
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
-                DIN INCAPACIDAD
+                FECHA INGRESO
               </InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
                 type="text"
-                name="finIncapacidad"
-                placeholder="fin de incapacidad"
+                name="fechaIngreso"
+                placeholder="fecha de ingreso"
                 ref={register()}
               />
             </p>
+            <p>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                FIN INCAPACIDAD
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="date"
+                name="finIncapacidad"
+                placeholder="fin de incapacidad"
+                className="fecha"
+                ref={register()}
+              />
+            </p>
+            <p>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                DIAS DE COBERTURA
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="number"
+                name="diasCobertura"
+                placeholder="dias de cobertura"
+                ref={register()}
+              />
+            </p>
+            
           </Paper>
         </Grid>
       </Grid>
       <p>
-        <input type="submit" />
-        <button type="reset" onClick={() => reset()}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="button"
+          endIcon={<SaveIcon/>}
+          type="submit"
+        >
+          Enviar
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          className="button"
+          endIcon={<DeleteIcon />}
+          type="reset"
+          onClick={() => reset()}
+        >
           Reset
-        </button>
+        </Button>
       </p>
     </form>
   );

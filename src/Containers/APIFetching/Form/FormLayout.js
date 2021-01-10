@@ -1,10 +1,15 @@
-import React from "react";
+import { React, useState } from "react";
 import { useForm } from "react-hook-form";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import InputLabel from "@material-ui/core/InputLabel";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Button } from "@material-ui/core";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function FormLayout({ onSubmit, currentValues }) {
+
+
+  
   const defaultValues = {
     ...currentValues,
   };
@@ -28,15 +36,24 @@ function FormLayout({ onSubmit, currentValues }) {
 
   const classes = useStyles();
 
+  let f = new Date();
+  const [fecha, setFecha] = useState(f);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={1}>
+      <Grid container spacing={0}>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">ID</InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
-              <input type="text" name="id" placeholder="id" ref={register()} readonly="readonly"/>
+              <input
+                type="text"
+                name="id"
+                placeholder="id"
+                ref={register()}
+                readOnly="ReadOnly"
+              />
             </p>
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
@@ -52,7 +69,7 @@ function FormLayout({ onSubmit, currentValues }) {
             </p>
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
-                PUESTO
+                Puesto
               </InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
@@ -78,19 +95,20 @@ function FormLayout({ onSubmit, currentValues }) {
                 ref={register()}
               />
             </p>
-
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">
-                FECHA INGRESO
+                FECHA DE INGRESO
               </InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
-                type="text"
+                type="date"
                 name="fechaIngreso"
                 placeholder="fecha de ingreso"
+                className="fecha"
                 ref={register()}
               />
             </p>
+
             <p>
               <InputLabel htmlFor="input-with-icon-adornment">DUI</InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
@@ -106,10 +124,25 @@ function FormLayout({ onSubmit, currentValues }) {
       </Grid>
 
       <p>
-        <input type="submit" className="enviar-color" />
-        <button type="reset" className="reset-color" onClick={() => reset()}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="button"
+          endIcon={<SaveIcon />}
+          type="submit"
+        >
+          Enviar
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          className="button"
+          endIcon={<DeleteIcon />}
+          type="reset"
+          onClick={() => reset()}
+        >
           Reset
-        </button>
+        </Button>
       </p>
     </form>
   );

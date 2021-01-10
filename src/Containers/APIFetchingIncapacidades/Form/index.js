@@ -1,7 +1,7 @@
 
 import React, { useContext, useState } from "react";
 import { db } from "../../../Firebase/firebase";
-import { incapacidadesContext} from "../Context";
+import { UsersContext } from "../../APIFetching/Context";
 import FormLayoutIncapacidades from "./FormLayoutIncapacidades";
 import FormLayout from "./FormLayoutIncapacidades";
 
@@ -10,7 +10,7 @@ function FormIncapacidades() {
   const {
     incapacidades: [incapacidades, setIncapacidades],
     currentIncapacidades: [currentIncapacidades, setCurrenteIncapacidades],
-  } = useContext(incapacidadesContext);
+  } = useContext(UsersContext);
 
   const isAddMode = !currentIncapacidades.id;
 
@@ -42,7 +42,7 @@ function FormIncapacidades() {
       diasCobertura: parseInt(values.diasCobertura),
     }
     console.log({ values, isAddMode });
-    if (isAddMode) {
+    if (values.id=== "") {
       postUser(payloadPost);
       //console.log({payload});
     }else{

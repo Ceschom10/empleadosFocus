@@ -5,14 +5,10 @@ import { db } from "../../../Firebase/firebase";
 import Row from "./Row";
 
 const ButtonAdd = styled.button`
- ${(props) =>
-    props.btnType === "primary" ? "blue" : "gray"};
-
-  &: hover {
-    color: yellow;
-    background-color: #36a149;
-  }
-
+&: hover {
+  color: yellow;
+  background-color: #36a149;
+}
   ${(props) =>
     props.btnType === "primary" &&
     css`
@@ -76,7 +72,7 @@ function List() {
           {users.map((user) => {
             //{console.log(users)}
             //{console.log(user);}
-            return <Row user={user} key={user.id} />;
+            return <Row user={user} key={user.id}>{user}</Row>;
           })}
         </tbody>
       </table>

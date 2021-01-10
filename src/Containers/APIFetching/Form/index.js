@@ -27,6 +27,8 @@ function Form() {
   const onSubmit = (values, e) => {
     console.log({ values });
 
+    /*let f= values.fechaIngreso;
+    f= f.getDate() + "/" +  (f.getMonth() + 1)  + "/" +  f.getFullYear();*/
     const payloadPost = {
       codigo: parseInt(values.codigo),
       nombre: values.nombre,
@@ -39,7 +41,7 @@ function Form() {
       codigo: parseInt(values.codigo),
     }
     console.log({ values, isAddMode });
-    if (isAddMode) {
+    if (values.id=== "") {
       postUser(payloadPost);
       //console.log({payload});
     }else{

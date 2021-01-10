@@ -1,24 +1,35 @@
+
 import React, { useContext } from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../Context";
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 
 function Row({ user }) {
   const {
-    users: [users, setUsers],
-    current: [current, setCurrent],
+    users: [, setUsers],
+    current: [, setCurrent],
   } = useContext(UsersContext);
 
   const deleteUser = async (user) => {
     if (window.confirm("Desea eliminarlo")) {
         await db.collection("empleados").doc(user.id).delete();
-      console.log("Empleado eliminado");  
-    }
-    setUsers(function (current) {
-      return current.filter((current) => {
-        return current.codigo!== user.codigo;
+      console.log("Empleado eliminado"); 
+      setUsers(function (current) {
+        return current.filter((current) => {
+          return current.codigo!== user.codigo;
+        });
       });
-    });
-  };
+    }; 
+    }
+    
+
+  const redirigir = ({user}) =>{
+    
+      
+  }
+    
 
   return (
     <tr>
@@ -28,8 +39,9 @@ function Row({ user }) {
       <td>{user.puesto}</td>
       <td>{user.dui}</td>
       <td>
-        <button onClick={() => setCurrent(user)}>E</button>
-        <button onClick={() => deleteUser(user)}>X</button>
+        <button  onClick={() => setCurrent(user)}>{<CreateIcon className="icon-update"/>}</button>
+        <button  onClick={() => deleteUser(user)}>{<DeleteIcon className="icon-delete"/>}</button>
+        <button  onClick={() => redirigir(user)}>{<LocalHospitalIcon className="icon-inca"/>}</button>
       </td>
     </tr>
   );

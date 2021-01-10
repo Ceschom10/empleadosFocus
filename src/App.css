@@ -74,6 +74,12 @@ input, button, select{
   padding: 5px;
   margin: 5px;
 }
+.button{
+  padding: 5px;
+  margin: 5px;
+  margin-left: 5px;
+  width: 140px;
+}
 
 label{
   margin-right: 8px;
@@ -115,5 +121,18 @@ thead{
 .th-css{
   background-color: #4a4bd6;
   color:#fff;
-  font-size: 20px;
+  font-size: 16px;
+}
+.icon-update{
+  background-color:#99B898;
+}
+.icon-delete{
+  background-color: #FECEA8;
+}
+.icon-inca{
+  background-color: #FF847C;
+  
+}
+.fecha{
+  width: 215.2px;
 }

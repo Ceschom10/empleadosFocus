@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { db } from "../../../Firebase/firebase";
-import { incapacidadesContext } from "../Context";
+import { UsersContext } from "../../APIFetching/Context";
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function RowIncapacidades({ incapacidad }) {
   const {
     incapacidades: [incapacidades, setIncapacidades],
     currentIncapacidades: [currentIncapacidades, setCurrentIncapacidades],
-  } = useContext(incapacidadesContext);
+  } = useContext(UsersContext);
 
   const deleteUser = async (incapacidad) => {
     if (window.confirm("Desea eliminarlo")) {
@@ -30,8 +32,8 @@ function RowIncapacidades({ incapacidad }) {
       <td>{incapacidad.finIncapacidad}</td>
       <td>{incapacidad.diasCobertura}</td>
       <td>
-        <button onClick={() => setCurrentIncapacidades(incapacidad)}>E</button>
-        <button onClick={() => deleteUser(incapacidad)}>X</button>
+        <button onClick={() => setCurrentIncapacidades(incapacidad)}>{<CreateIcon className="icon-update"/>}</button>
+        <button onClick={() => deleteUser(incapacidad)}>{<DeleteIcon className="icon-delete"/>}</button>
       </td>
     </tr>
   );
