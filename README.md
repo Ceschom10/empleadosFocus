@@ -22,7 +22,7 @@ The first version's CRUD have been developed by Herbert Fernández Tamayo, the s
 
 This README file is intentional written in english thinking in developers and users who don't speak our mother language, which is spanish, and because, Focus ITO's clients are english speakers and surely their workforce needs to have skills in this language.
 
-The project's link is: [Project's Main Link](https://medcertificates.netlify.app/#/)
+The project's link is: [Project's Main Link](https://empleados-focus-react-app.netlify.app/#/)
 
 User's credentials: ejemplo@ejemplo.com and the password is Contrasenia1
 
