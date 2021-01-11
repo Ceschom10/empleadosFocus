@@ -10,11 +10,15 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
+  button:{
+    margin: theme.spacing(1),
+    width: 110,
+},
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(),
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
@@ -26,7 +30,7 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
     ...currentValues,
   };
 
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit, reset, errors } = useForm({
     defaultValues,
   });
 
@@ -35,24 +39,58 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={6} >
-          <Paper className={classes.paper}>
-          <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                ID INCAPACIDAD
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+        <Grid item xs={12} >
+          
+         
+          <div>
               <input
                 type="text"
                 name="id"
                 readOnly="readOnly"
-                placeholder="fin de incapacidad"
+                className="oculto"
                 ref={register()}
               />
-            </p>
+            </div>
+            <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                CODIGO EMPLEADO
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="number"
+                name="codigo"
+                placeholder="codigo"
+                ref={register({ required: true, maxLength: 10 })}
+              />
+            </div>
+            <div>
+            {errors.codigo && errors.codigo.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.codigo && errors.codigo.type === "maxLength" && (
+                <span>Maximo 10</span>
+              )}
+            </div>
+            <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                FECHA INGRESO
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="date"
+                name="fechaIngreso"
+                placeholder="fecha de ingreso"
+                className="fecha"
+                ref={register({ required: true})}
+              />
+            </div>
+            <div>
+            {errors.fechaIngreso && errors.fechaIngreso.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+            </div>
             
-
-            <p>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 UNIDAD MEDICA
               </InputLabel>
@@ -61,10 +99,38 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 type="text"
                 name="unidadMedica"
                 placeholder="unidad medica"
-                ref={register()}
+                ref={register({ required: true, maxLength: 50 })}
               />
-            </p>
-            <p>
+            </div>
+            <div>
+            {errors.unidadMedica && errors.unidadMedica.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.unidadMedica && errors.unidadMedica.type === "maxLength" && (
+                <span>Maximo 50</span>
+              )}
+            </div>
+            <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                DOCTOR
+              </InputLabel>
+              <label>{<AccountCircleIcon color="primary" />}</label>
+              <input
+                type="text"
+                name="doctor"
+                placeholder="doctor"
+                ref={register({ required: true, maxLength: 50 })}
+              />
+            </div>
+            <div>
+            {errors.doctor && errors.doctor.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.doctor && errors.doctor.type === "maxLength" && (
+                <span>Maximo 50</span>
+              )}
+            </div>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 INICIO INCAPACIDAD
               </InputLabel>
@@ -74,52 +140,16 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 name="inicioIncapacidad"
                 placeholder="inicio de incapacidad"
                 className="fecha"
-                ref={register()}
+                ref={register({ required: true })}
               />
-            </p>
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                DOCTOR
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="text"
-                name="doctor"
-                placeholder="doctor"
-                ref={register()}
-              />
-            </p>
-
-          </Paper>
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-          <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                CODIGO EMPLEADO
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="number"
-                name="codigo"
-                placeholder="codigo"
-                ref={register()}
-              />
-            </p>
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                FECHA INGRESO
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="text"
-                name="fechaIngreso"
-                placeholder="fecha de ingreso"
-                ref={register()}
-              />
-            </p>
-            <p>
+              <div>
+            {errors.inicioIncapacidad && errors.inicioIncapacidad.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+            </div>
+               
+            </div>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 FIN INCAPACIDAD
               </InputLabel>
@@ -129,10 +159,16 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 name="finIncapacidad"
                 placeholder="fin de incapacidad"
                 className="fecha"
-                ref={register()}
+                ref={register({ required: true})}
               />
-            </p>
-            <p>
+              <div>
+            {errors.finIncapacidad && errors.finIncapacidad.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+            </div>
+               
+            </div>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 DIAS DE COBERTURA
               </InputLabel>
@@ -141,18 +177,27 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 type="number"
                 name="diasCobertura"
                 placeholder="dias de cobertura"
-                ref={register()}
+                ref={register({ required: true, maxLength: 3 })}
               />
-            </p>
-            
-          </Paper>
+            </div>
+            <div>
+            {errors.diasCobertura && errors.diasCobertura.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.diasCobertura && errors.diasCobertura.type === "maxLength" && (
+                <span>Maximo 3</span>
+              )}
+            </div>
+         
         </Grid>
       </Grid>
-      <p>
+      
+     
+      <div>
         <Button
           variant="contained"
           color="primary"
-          className="button"
+          className={classes.button}
           endIcon={<SaveIcon/>}
           type="submit"
         >
@@ -161,14 +206,14 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="secondary"
-          className="button"
+          className={classes.button}
           endIcon={<DeleteIcon />}
           type="reset"
           onClick={() => reset()}
         >
           Reset
         </Button>
-      </p>
+      </div>
     </form>
   );
 }

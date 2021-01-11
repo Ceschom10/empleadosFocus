@@ -22,7 +22,7 @@ function APIFetchingIncapacidades() {
   return (
     <div className="App-form-users">
       <UsersProvider>
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
               <List />

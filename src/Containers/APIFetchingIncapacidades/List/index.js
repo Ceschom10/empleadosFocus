@@ -1,8 +1,18 @@
-import React, { useCallback, useContext, useEffect} from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { db } from "../../../Firebase/firebase";
 import RowIncapacidades from "./RowIncapacidades";
 import { UsersContext } from "../../APIFetching/Context";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  
+  button:{
+      margin: theme.spacing(1),
+      width: 110,
+  },
+}));
 
 const ButtonAdd = styled.button`
   &: hover {
@@ -13,19 +23,21 @@ const ButtonAdd = styled.button`
   ${(props) =>
     props.btnType === "primary" &&
     css`
-    background-color: #ff1465;
-    color:#fff;
-    font-size: 18px;
+      background-color: #ff1465;
+      color: #fff;
+      font-size: 18px;
     `}
 
   ${(props) =>
     props.btnType === "secondary" &&
     css`
-    background-color: #4a4bd6;
-    color:#fff;
-    font-size: 20px;
+      background-color: #4a4bd6;
+      color: #fff;
+      font-size: 20px;
     `}
 `;
+
+
 
 function ListIncapacidades() {
   const {
@@ -34,13 +46,15 @@ function ListIncapacidades() {
   } = useContext(UsersContext);
 
   const fetchUsers = useCallback(async () => {
-    db.collection('incapacidades').onSnapshot((querySnapshot) => {
+    db.collection("incapacidades").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
         //console.log(doc.data());
         docs.push({ ...doc.data(), id: doc.id });
       });
-      docs.sort((a, b) => (a.codigo > b.codigo ? 1 : a.codigo < b.codigo ? -1 : 0));
+      docs.sort((a, b) =>
+        a.codigo > b.codigo ? 1 : a.codigo < b.codigo ? -1 : 0
+      );
       //console.log(docs);
       setIncapacidades(docs);
     });
@@ -50,15 +64,26 @@ function ListIncapacidades() {
     fetchUsers();
   }, [fetchUsers]);
 
+  const classes = useStyles();
+
   return (
     <div className="App-box">
-      <ButtonAdd
-        type="button"
-        onClick={() => setCurrentIncapacidades({})}
-        btnType={currentIncapacidades.id ? "primary" : "secondary"}
+      <Grid
+        container
+        direction="row"
+        justify="flex-end"
+        alignItems="flex-start"
       >
-        Add+
-      </ButtonAdd>
+        <ButtonAdd
+          type="button"
+          className={classes.button}
+          onClick={() => setCurrentIncapacidades({})}
+          btnType={currentIncapacidades.id ? "primary" : "secondary"}
+        >
+          Add+
+        </ButtonAdd>
+      </Grid>
+
       <table>
         <thead>
           <tr>
@@ -75,7 +100,12 @@ function ListIncapacidades() {
           {incapacidades.map((incapacidad) => {
             //{console.log(users)}
             //{console.log(user);}
-            return <RowIncapacidades incapacidad={incapacidad} key={incapacidad.id} />;
+            return (
+              <RowIncapacidades
+                incapacidad={incapacidad}
+                key={incapacidad.id}
+              />
+            );
           })}
         </tbody>
       </table>

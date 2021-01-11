@@ -66,19 +66,14 @@ main{
   display: flex;
 }
 .App-box{
-  margin: 10px;
-  padding: 10px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 0px;
 }
 input, button, select{
   font-size: 18px;
   padding: 5px;
   margin: 5px;
-}
-.button{
-  padding: 5px;
-  margin: 5px;
-  margin-left: 5px;
-  width: 140px;
 }
 
 label{
@@ -137,5 +132,8 @@ thead{
   width: 215.2px;
 }
 .inicio{
-  width: 1000px;
+  width: 67%;
+}
+.oculto{
+  display:none
 }

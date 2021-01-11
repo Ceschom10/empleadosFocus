@@ -1,28 +1,38 @@
 import React, { useCallback, useContext, useEffect } from "react";
-import {  UsersContext } from "../Context";
+import { UsersContext } from "../Context";
 import styled, { css } from "styled-components";
 import { db } from "../../../Firebase/firebase";
 import Row from "./Row";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  
+  button:{
+      margin: theme.spacing(1),
+      width: 110,
+  },
+}));
 
 const ButtonAdd = styled.button`
-&: hover {
-  color: yellow;
-  background-color: #36a149;
-}
+  &: hover {
+    color: yellow;
+    background-color: #36a149;
+  }
   ${(props) =>
     props.btnType === "primary" &&
     css`
-    background-color: #ff1465;
-    color:#fff;
-    font-size: 18px;
+      background-color: #ff1465;
+      color: #fff;
+      font-size: 18px;
     `}
 
   ${(props) =>
     props.btnType === "secondary" &&
     css`
-    background-color: #4a4bd6;
-    color:#fff;
-    font-size: 20px;
+      background-color: #4a4bd6;
+      color: #fff;
+      font-size: 20px;
     `}
 `;
 
@@ -33,13 +43,15 @@ function List() {
   } = useContext(UsersContext);
 
   const fetchUsers = useCallback(async () => {
-    db.collection('empleados').onSnapshot((querySnapshot) => {
+    db.collection("empleados").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
         //console.log(doc.data());
         docs.push({ ...doc.data(), id: doc.id });
       });
-      docs.sort((a, b) => (a.codigo > b.codigo ? 1 : a.codigo < b.codigo ? -1 : 0));
+      docs.sort((a, b) =>
+        a.codigo > b.codigo ? 1 : a.codigo < b.codigo ? -1 : 0
+      );
       //console.log(docs);
       setUsers(docs);
     });
@@ -48,18 +60,29 @@ function List() {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+ 
+  const classes = useStyles();
 
   return (
     <div className="App-box">
-      <ButtonAdd
-        type="button"
-        onClick={() => setCurrent({})}
-        btnType={current.id ? "primary" : "secondary"}
+      <Grid
+        container
+        direction="row"
+        justify="flex-end"
+        alignItems="flex-start"
       >
-        Add+
-      </ButtonAdd>
+        <ButtonAdd
+          type="button"
+          onClick={() => setCurrent({})}
+          btnType={current.id ? "primary" : "secondary"}
+          className={classes.button}
+        >
+          Add+
+        </ButtonAdd>
+      </Grid>
+
       <table>
-        <thead >
+        <thead>
           <tr>
             <th className="th-css">Codigo</th>
             <th className="th-css">Nombre</th>
@@ -72,7 +95,11 @@ function List() {
           {users.map((user) => {
             //{console.log(users)}
             //{console.log(user);}
-            return <Row user={user} key={user.id}>{user}</Row>;
+            return (
+              <Row user={user} key={user.id}>
+                {user}
+              </Row>
+            );
           })}
         </tbody>
       </table>

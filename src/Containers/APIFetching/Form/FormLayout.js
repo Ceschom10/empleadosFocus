@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  button: {
+    margin: theme.spacing(1),
+    width: 110,
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -21,14 +25,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function FormLayout({ onSubmit, currentValues }) {
-
-
-  
   const defaultValues = {
     ...currentValues,
   };
 
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit, reset, errors } = useForm({
     defaultValues,
   });
 
@@ -38,19 +39,38 @@ function FormLayout({ onSubmit, currentValues }) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={0}>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">ID</InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+          
+            <div>
               <input
                 type="text"
                 name="id"
                 placeholder="id"
                 ref={register()}
                 readOnly="ReadOnly"
+                className="oculto"
               />
-            </p>
-            <p>
+            </div>
+              <div>
+                <InputLabel htmlFor="input-with-icon-adornment">
+                  CODIGO EMPLEADO
+                </InputLabel>
+                <label>{<AccountCircleIcon color="primary" />}</label>
+                <input
+                  type="number"
+                  name="codigo"
+                  placeholder="codigo"
+                  ref={register({ required: true, maxLength: 10 })}
+                />
+              </div>
+              <div>
+              {errors.codigo && errors.codigo.type === "required" && (
+                  <span>*Campo requerido</span>
+                )}
+                 {errors.codigo && errors.codigo.type === "maxLength:" && (
+                <span>Maximo 50</span>
+              )}
+              </div>
+              <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 NOMBRE
               </InputLabel>
@@ -59,10 +79,18 @@ function FormLayout({ onSubmit, currentValues }) {
                 type="text"
                 name="nombre"
                 placeholder="nombre"
-                ref={register()}
+                ref={register({ required: true, maxLength:50 })}
               />
-            </p>
-            <p>
+            </div>
+            <div>
+            {errors.nombre && errors.nombre.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.nombre && errors.nombre.type === "maxLength" && (
+                <span>Maximo 50</span>
+              )}
+            </div>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 Puesto
               </InputLabel>
@@ -71,26 +99,20 @@ function FormLayout({ onSubmit, currentValues }) {
                 type="text"
                 name="puesto"
                 placeholder="puesto"
-                ref={register()}
+                ref={register({ required: true, maxLength: 50 })}
               />
-            </p>
-          </Paper>
+            </div>
+            <div>
+            {errors.puesto && errors.puesto.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.puesto && errors.puesto.type === "maxLength" && (
+                <span>Maximo 50</span>
+              )}
+            </div>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <p>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                CODIGO EMPLEADO
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="number"
-                name="codigo"
-                placeholder="codigo"
-                ref={register()}
-              />
-            </p>
-            <p>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 FECHA DE INGRESO
               </InputLabel>
@@ -100,29 +122,42 @@ function FormLayout({ onSubmit, currentValues }) {
                 name="fechaIngreso"
                 placeholder="fecha de ingreso"
                 className="fecha"
-                ref={register()}
+                ref={register({ required: true })}
               />
-            </p>
+            </div>
+            <div>
+            {errors.fechaIngreso && errors.fechaIngreso.type === "required" && (
+                <span>* campo requerido</span>
+              )}
+            </div>
 
-            <p>
+            <div>
               <InputLabel htmlFor="input-with-icon-adornment">DUI</InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
-                type="text"
+                type="number"
                 name="dui"
                 placeholder="dui"
-                ref={register()}
+                ref={register({ required: true, maxLength: 10 })}
               />
-            </p>
-          </Paper>
+            </div>
+            <div>
+            {errors.dui && errors.dui.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.dui && errors.dui.type === "maxLength" && (
+                <span>Formato ########-#</span>
+              )}
+            </div>
+          
         </Grid>
       </Grid>
 
-      <p>
+      <div>
         <Button
           variant="contained"
           color="primary"
-          className="button"
+          className={classes.button}
           endIcon={<SaveIcon />}
           type="submit"
         >
@@ -131,14 +166,14 @@ function FormLayout({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="secondary"
-          className="button"
+          className={classes.button}
           endIcon={<DeleteIcon />}
           type="reset"
           onClick={() => reset()}
         >
           Reset
         </Button>
-      </p>
+      </div>
     </form>
   );
 }
