@@ -78,6 +78,7 @@ Contentful and Auth0 were part of the tools used during the process of deploying
 
 ![deploying01.png](./img/deploying01.png?raw=true "Deploying process")
 
+
 ![deploying02.png](./img/deploying02.png?raw=true "Deploying process")
 
 ### 5. Project's future improvements
