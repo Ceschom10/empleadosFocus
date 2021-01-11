@@ -24,7 +24,7 @@ This README file is intentional written in english thinking in developers and us
 
 The project's link is: [Project's Main Link](https://empleados-focus-react-app.netlify.app/#/)
 
-User's credentials: ejemplo@ejemplo.com and the password is Contrasenia1
+User's credentials: ejemplo10ejemplo@hotmail.com and the password is 1234asdfA@, you can still log in with any existing email of yours if you wish.
 
 ### 2. Dependencies and Technical Details
 1. English version of the System:
