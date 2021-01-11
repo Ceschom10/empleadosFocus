@@ -1,15 +1,13 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../../APIFetching/Context";
 import FormLayoutIncapacidades from "./FormLayoutIncapacidades";
-import FormLayout from "./FormLayoutIncapacidades";
 
 function FormIncapacidades() {
  
   const {
-    incapacidades: [incapacidades, setIncapacidades],
-    currentIncapacidades: [currentIncapacidades, setCurrenteIncapacidades],
+    currentIncapacidades: [currentIncapacidades, ],
   } = useContext(UsersContext);
 
   const isAddMode = !currentIncapacidades.id;

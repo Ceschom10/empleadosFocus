@@ -6,8 +6,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 function RowIncapacidades({ incapacidad }) {
   const {
-    incapacidades: [incapacidades, setIncapacidades],
-    currentIncapacidades: [currentIncapacidades, setCurrentIncapacidades],
+    incapacidades: [, setIncapacidades],
+    currentIncapacidades: [, setCurrentIncapacidades],
   } = useContext(UsersContext);
 
   const deleteUser = async (incapacidad) => {
@@ -21,6 +21,8 @@ function RowIncapacidades({ incapacidad }) {
       });
     });
   };
+
+  
 
   return (
     <tr>

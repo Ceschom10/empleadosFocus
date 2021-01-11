@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function APIFetchingIncapacidades() {
   const classes = useStyles();
+
   return (
     <div className="App-form-users">
         <UsersProvider>

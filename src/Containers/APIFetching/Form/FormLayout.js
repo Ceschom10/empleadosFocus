@@ -34,9 +34,6 @@ function FormLayout({ onSubmit, currentValues }) {
 
   const classes = useStyles();
 
-  let f = new Date();
-  const [fecha, setFecha] = useState(f);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={0}>

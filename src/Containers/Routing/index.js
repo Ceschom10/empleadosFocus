@@ -1,8 +1,10 @@
 import React from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
+import Inicio from "../../Components/inicio";
 import APIFetching from "../APIFetching";
 import APIFetchingIncapacidades from "../APIFetchingIncapacidades";
 import Menu from "./Menu";
+import PrivateRoute from "./PrivateRoute"
 
 
 function Routing() {
@@ -13,11 +15,14 @@ function Routing() {
         <Menu/>
         <Switch>
           <Route exact path="/">
+            <Inicio/>
+          </Route>
+          <PrivateRoute path="/empleados">
             <APIFetching />
-          </Route>
-          <Route path="/incapacidades">
+          </PrivateRoute>
+          <PrivateRoute path="/incapacidades">
             <APIFetchingIncapacidades />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </HashRouter>
     </div>

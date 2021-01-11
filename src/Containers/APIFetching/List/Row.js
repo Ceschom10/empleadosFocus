@@ -1,15 +1,16 @@
-
 import React, { useContext } from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../Context";
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import {useHistory} from 'react-router-dom'
 
 function Row({ user }) {
   const {
     users: [, setUsers],
-    current: [, setCurrent],
+    current: [current, setCurrent],
+    currentIncapacidades: [, setCurrentIncapacidades]
   } = useContext(UsersContext);
 
   const deleteUser = async (user) => {
@@ -24,10 +25,18 @@ function Row({ user }) {
     }; 
     }
     
+    const history = useHistory();
 
-  const redirigir = ({user}) =>{
+  const llevar = () =>{
     
+    setCurrent(user);
+      const cargarIncapacidad = {
+        codigo : current.codigo,
+        fechaIngreso: current.fechaIngreso,
+      }
       
+    console.log(current);
+    history.push('/incapacidades' , setCurrentIncapacidades(cargarIncapacidad));
   }
     
 
@@ -41,7 +50,7 @@ function Row({ user }) {
       <td>
         <button  onClick={() => setCurrent(user)}>{<CreateIcon className="icon-update"/>}</button>
         <button  onClick={() => deleteUser(user)}>{<DeleteIcon className="icon-delete"/>}</button>
-        <button  onClick={() => redirigir(user)}>{<LocalHospitalIcon className="icon-inca"/>}</button>
+        <button  onClick={() =>  llevar()}>{<LocalHospitalIcon className="icon-inca"/>}</button>
       </td>
     </tr>
   );

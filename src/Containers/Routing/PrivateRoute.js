@@ -13,6 +13,7 @@ function PrivateRoute({children, ...rest}) {
                 :
                 (<Redirect to = {{pathname: '/'}}/>)
             }
+        
         </Route>
     )
 }

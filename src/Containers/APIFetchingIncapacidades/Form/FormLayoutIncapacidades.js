@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function FormLayoutIncapacidades({ onSubmit, currentValues }) {
+
   const defaultValues = {
     ...currentValues,
   };

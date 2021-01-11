@@ -7,7 +7,7 @@ const LogoutButton = () => {
     return (
         isAuthenticated ?
             (
-                <Box direction="row"  gap="medium" justify="center">
+                <Box direction="row"  gap="medium" justify="end">
                     <Avatar src = {user.picture} title = {user.name} size = 'small'/>
                     <Button className="logButton" onClick={() => logout({returnTo: window.location.origin})}>LogOut</Button>
                 </Box>

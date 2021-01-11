@@ -1,5 +1,4 @@
-
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../Context";
 import FormLayout from "./FormLayout";
@@ -7,8 +6,7 @@ import FormLayout from "./FormLayout";
 function Form() {
  
   const {
-    users: [users, setUsers],
-    current: [current, setCurrent],
+    current: [current, ],
   } = useContext(UsersContext);
 
   const isAddMode = !current.id;
