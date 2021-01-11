@@ -135,10 +135,10 @@ function FormLayout({ onSubmit, currentValues }) {
               <InputLabel htmlFor="input-with-icon-adornment">DUI</InputLabel>
               <label>{<AccountCircleIcon color="primary" />}</label>
               <input
-                type="number"
+                type="text"
                 name="dui"
                 placeholder="dui"
-                ref={register({ required: true, maxLength: 10 })}
+                ref={register({ required: true, maxLength: 10})}
               />
             </div>
             <div>
