@@ -55,7 +55,7 @@ User's credentials: ejemplo@ejemplo.com and the password is Contrasenia1
 ### 3. Screen Recording
 In the next video the user may have access how the project works as well and overwiew of the project's tree :
 
-[Project's Overview](https://youtu.be/KLuP--zpmb4)
+[Project's Overview](https://youtu.be/NjfIBcgUv_c)
 
 
 ### 4. Technical Details:
