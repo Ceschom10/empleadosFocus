@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    marginTop: 65,
   },
 }));
 
@@ -25,12 +26,12 @@ function APIFetchingIncapacidades() {
     <div className="App-form-users">
         <UsersProvider>
       <Grid container spacing={1}>
-        <Grid item xs>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
               <ListIncapacidades />
           </Paper>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
               <FormIncapacidades />
           </Paper>

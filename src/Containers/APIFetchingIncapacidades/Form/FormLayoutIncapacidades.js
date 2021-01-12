@@ -39,9 +39,8 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={1}>
-        <Grid item xs={12} >
+        <Grid item xs={12} sm={6}>
           
-         
           <div>
               <input
                 type="text"

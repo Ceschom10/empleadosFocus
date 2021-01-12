@@ -98,8 +98,8 @@ thead{
 }
 
 .link{
-  color:#fff;
-  font-size: 18px;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 .enviar-color{
   background-color: #4a4bd6;
@@ -132,8 +132,11 @@ thead{
   width: 215.2px;
 }
 .inicio{
-  width: 67%;
+  width: 70%;
 }
 .oculto{
   display:none
+}
+.ini{
+  margin-top: 90px;
 }
