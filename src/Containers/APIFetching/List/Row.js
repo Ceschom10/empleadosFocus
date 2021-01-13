@@ -115,6 +115,7 @@ function Row({ user }) {
         <Button
           className={classes.buttonMod}
           variant="contained"
+          color="primary"
           onClick={() => setCurrent(user)}
         >
           {<CreateIcon className={classes.icon} />}
@@ -122,6 +123,7 @@ function Row({ user }) {
         <Button
           className={classes.buttonElim}
           variant="contained"
+          color="primary"
           onClick={() => deleteUser(user)}
         >
           {<DeleteIcon className={classes.icon} />}
@@ -129,6 +131,7 @@ function Row({ user }) {
         <Button
           className={classes.buttonInca}
           variant="contained"
+          color="primary"
           onClick={() => llevar()}
         >
           {<LocalHospitalIcon className={classes.icon} />}

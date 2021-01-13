@@ -105,6 +105,7 @@ function RowIncapacidades({ incapacidad }) {
       <StyledTableCell align="right">
         <Button
           variant="contained"
+          color="primary"
           className={classes.buttonMod}
           onClick={() => setCurrentIncapacidades(incapacidad)}
         >
@@ -113,6 +114,7 @@ function RowIncapacidades({ incapacidad }) {
         <Button
           className={classes.buttonElim}
           variant="contained"
+          color="primary"
           onClick={() => deleteUser(incapacidad)}
         >
           {<DeleteIcon className={classes.buttonElim}/>}
