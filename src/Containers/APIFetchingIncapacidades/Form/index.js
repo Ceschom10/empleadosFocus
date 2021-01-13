@@ -1,8 +1,8 @@
-
 import React, { useContext} from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../../APIFetching/Context";
 import FormLayoutIncapacidades from "./FormLayoutIncapacidades";
+import swal from 'sweetalert';
 
 function FormIncapacidades() {
  
@@ -14,11 +14,21 @@ function FormIncapacidades() {
 
   const postUser = async (payloadPost) => {
     await db.collection('incapacidades').doc().set(payloadPost);
+    swal({
+      text: "La incapacidad se ha creado con exito",
+      icon: "success",
+      timer: 800,
+    });
     console.log('new incapacidad');
   };
 
   const putUser = async (payloadPut, payloadPost) => {
       await db.collection('incapacidades').doc(payloadPut.id).update(payloadPost);
+      swal({
+        text: "La incapacidad se ha actualizado con exito",
+        icon: "success",
+        timer: 800,
+      });
       console.log('Incapacidad actualizado');
   };
 

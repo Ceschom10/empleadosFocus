@@ -73,7 +73,7 @@ function Row({ user }) {
         swal({
           text: "El archivo se ha borrado con exito",
           icon: "success",
-          timer: 1000,
+          timer: 800,
         });
       }
     });

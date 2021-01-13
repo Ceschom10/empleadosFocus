@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { db } from "../../../Firebase/firebase";
 import { UsersContext } from "../Context";
-import FormLayout from "./FormLayout";
+import FormLayout from "./FormLayout"
+import swal from 'sweetalert'
 
 function Form() {
  
@@ -14,11 +15,21 @@ function Form() {
   const postUser = async (payloadPost) => {
     console.log(payloadPost);
     await db.collection('empleados').doc().set(payloadPost);
+    swal({
+      text: "El empleado se ha creado con exito",
+      icon: "success",
+      timer: 800,
+    });
     console.log('new empleado');
   };
 
   const putUser = async (payloadPut, payloadPost) => {
       await db.collection('empleados').doc(payloadPut.id).update(payloadPost);
+      swal({
+        text: "El empleado se ha actualizado con exito",
+        icon: "success",
+        timer: 800,
+      });
       console.log('Empleado actualizado');
   };
 
