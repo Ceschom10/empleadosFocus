@@ -8,13 +8,12 @@ import UsersProvider from "../APIFetching/Context";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    marginTop: 25
   },
   paper: {
-    padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    marginTop: 65,
+    marginTop: 80,
   },
 }));
 
@@ -25,13 +24,13 @@ function APIFetchingIncapacidades() {
   return (
     <div className="App-form-users">
         <UsersProvider>
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={6}>
+      <Grid container spacing={3} className={classes.root}>
+        <Grid item >
           <Paper className={classes.paper}>
               <ListIncapacidades />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item>
           <Paper className={classes.paper}>
               <FormIncapacidades />
           </Paper>

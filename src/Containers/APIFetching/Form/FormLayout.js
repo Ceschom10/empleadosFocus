@@ -7,20 +7,35 @@ import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Button } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    marginTop: 15
   },
-  button: {
+  buttonPrimary: {
     margin: theme.spacing(1),
     width: 110,
+    background: '#eb445a',
+    color: 'white',
+    
+  },
+  buttonSecondary: {
+    margin: theme.spacing(1),
+    width: 110,
+    background: '#3880ff',
+    color: 'white',
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  icon:{
+    color: '#ffc409',
+    fontSize: 35,
+  }
 }));
 
 function FormLayout({ onSubmit, currentValues }) {
@@ -36,10 +51,10 @@ function FormLayout({ onSubmit, currentValues }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={0}>
+      <Grid container spacing={0} >
         <Grid item xs={12} sm={6}>
           
-            <div>
+            <div >
               <input
                 type="text"
                 name="id"
@@ -53,7 +68,7 @@ function FormLayout({ onSubmit, currentValues }) {
                 <InputLabel htmlFor="input-with-icon-adornment">
                   CODIGO EMPLEADO
                 </InputLabel>
-                <label>{<AccountCircleIcon color="primary" />}</label>
+                <label>{<AccountCircleIcon className={classes.icon} />}</label>
                 <input
                   type="number"
                   name="codigo"
@@ -73,7 +88,7 @@ function FormLayout({ onSubmit, currentValues }) {
               <InputLabel htmlFor="input-with-icon-adornment">
                 NOMBRE
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="text"
                 name="nombre"
@@ -93,7 +108,7 @@ function FormLayout({ onSubmit, currentValues }) {
               <InputLabel htmlFor="input-with-icon-adornment">
                 Puesto
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="text"
                 name="puesto"
@@ -115,7 +130,7 @@ function FormLayout({ onSubmit, currentValues }) {
               <InputLabel htmlFor="input-with-icon-adornment">
                 FECHA DE INGRESO
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="date"
                 name="fechaIngreso"
@@ -132,7 +147,7 @@ function FormLayout({ onSubmit, currentValues }) {
 
             <div>
               <InputLabel htmlFor="input-with-icon-adornment">DUI</InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="text"
                 name="dui"
@@ -156,7 +171,7 @@ function FormLayout({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="primary"
-          className={classes.button}
+          className={classes.buttonPrimary}
           endIcon={<SaveIcon />}
           type="submit"
         >
@@ -165,7 +180,7 @@ function FormLayout({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="secondary"
-          className={classes.button}
+          className={classes.buttonSecondary}
           endIcon={<DeleteIcon />}
           type="reset"
           onClick={() => reset()}

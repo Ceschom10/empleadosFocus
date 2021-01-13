@@ -1,10 +1,27 @@
 import React, { useCallback, useContext, useEffect } from "react";
 import { UsersContext } from "../Context";
-import styled, { css } from "styled-components";
 import { db } from "../../../Firebase/firebase";
 import Row from "./Row";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
+import { withStyles, } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: 'SteelBlue',
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 10,
+  },
+}))(TableCell);
+
 
 const useStyles = makeStyles((theme) => ({
   
@@ -13,28 +30,6 @@ const useStyles = makeStyles((theme) => ({
       width: 110,
   },
 }));
-
-const ButtonAdd = styled.button`
-  &: hover {
-    color: yellow;
-    background-color: #36a149;
-  }
-  ${(props) =>
-    props.btnType === "primary" &&
-    css`
-      background-color: #ff1465;
-      color: #fff;
-      font-size: 18px;
-    `}
-
-  ${(props) =>
-    props.btnType === "secondary" &&
-    css`
-      background-color: #4a4bd6;
-      color: #fff;
-      font-size: 20px;
-    `}
-`;
 
 function List() {
   const {
@@ -65,34 +60,20 @@ function List() {
 
   return (
     <div className="App-box">
-      <Grid
-        container
-        direction="row"
-        justify="flex-end"
-        alignItems="flex-start"
-      >
-        <ButtonAdd
-          type="button"
-          onClick={() => setCurrent({})}
-          btnType={current.id ? "primary" : "secondary"}
-          className={classes.button}
-        >
-          Add+
-        </ButtonAdd>
-      </Grid>
-
-      <table>
-        <thead>
-          <tr>
-            <th className="th-css">Codigo</th>
-            <th className="th-css">Nombre</th>
-            <th className="th-css">Fecha</th>
-            <th className="th-css">Puesto</th>
-            <th className="th-css">Dui</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => {
+      <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Cod.</StyledTableCell>
+            <StyledTableCell >Nombre</StyledTableCell>
+            <StyledTableCell >Fecha</StyledTableCell>
+            <StyledTableCell >Puesto</StyledTableCell>
+            <StyledTableCell >Dui</StyledTableCell>
+            <StyledTableCell >Acciones</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {users.map((user) => {
             //{console.log(users)}
             //{console.log(user);}
             return (
@@ -101,8 +82,9 @@ function List() {
               </Row>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+        </Table>
+        </TableContainer>
     </div>
   );
 }

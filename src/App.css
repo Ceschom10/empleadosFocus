@@ -61,15 +61,7 @@ tr td{
 main{
   margin: 25px;
 }
-.App-form-users{
-  margin: 20px;
-  display: flex;
-}
-.App-box{
-  margin: 0px;
-  padding: 0px;
-  margin-top: 0px;
-}
+
 input, button, select{
   font-size: 18px;
   padding: 5px;
@@ -80,38 +72,9 @@ label{
   margin-right: 8px;
 }
 
-table tr {
-  background-color: #eee;
-}
-table tr:nth-child(2) {
-  background-color: #eee;
-}
-table tr:nth-child(even) {
-  background-color: #eee;
-}
-
-table tr:nth-child(odd) {
-  background-color: #fff;
-}
-thead{
-  background-attachment: black;
-}
-
 .link{
   margin-right: 100px;
   margin-left: 100px;
-}
-.enviar-color{
-  background-color: #4a4bd6;
-  color: #fff;
-  font-size: 18px;
-  width: 200px;
-}
-.reset-color{
-  background-color: #ff1465;
-  color:#fff;
-  font-size: 18px;
-  width: 200px;
 }
 .th-css{
   background-color: #4a4bd6;
@@ -119,24 +82,28 @@ thead{
   font-size: 16px;
 }
 .icon-update{
-  background-color:#99B898;
+  background-color: #eb445a;
 }
 .icon-delete{
-  background-color: #FECEA8;
+  background-color: #2dd36f;
 }
 .icon-inca{
-  background-color: #FF847C;
+  background-color:#ffc409;
   
 }
 .fecha{
   width: 215.2px;
 }
 .inicio{
-  width: 105%;
+  width: 180%;
+  margin-right: 25px;
 }
 .oculto{
   display:none
 }
 .ini{
   margin-top: 90px;
+}
+.center-form{
+  justify: "center"
 }

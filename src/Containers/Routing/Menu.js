@@ -17,16 +17,19 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
   },
+  fondo: {
+    background: "SteelBlue"
+  }
 }));
 
 function Menu() {
   const classes = useStyles();
   return (
     <div>
-      <Grid container spacing={1}>
-        <Grid xs={12}>
-          <AppBar>
-          <Typography variant="h7" className={classes.root} align="left" >
+      <Grid container spacing={1} >
+        <Grid xs={12} sm={6}>
+          <AppBar className={classes.fondo}>
+          <Typography variant="h5" className={classes.root} align="left" >
                 <Link href="#/" color="inherit" className={classes.paper}>
                 Inicio{<HomeIcon />}
                 </Link>

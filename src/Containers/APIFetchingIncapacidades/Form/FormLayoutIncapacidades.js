@@ -10,10 +10,19 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  button:{
+  buttonPrimary: {
     margin: theme.spacing(1),
     width: 110,
-},
+    background: '#eb445a',
+    color: 'white',
+    
+  },
+  buttonSecondary: {
+    margin: theme.spacing(1),
+    width: 110,
+    background: '#3880ff',
+    color: 'white',
+  },
   root: {
     flexGrow: 1,
   },
@@ -21,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(),
     textAlign: "center",
     color: theme.palette.text.secondary,
+  },
+  icon:{
+    color: '#ffc409',
+    fontSize: 35,
   },
 }));
 
@@ -41,7 +54,7 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6}>
           
-          <div>
+          <div >
               <input
                 type="text"
                 name="id"
@@ -54,7 +67,7 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
               <InputLabel htmlFor="input-with-icon-adornment">
                 CODIGO EMPLEADO
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="number"
                 name="codigo"
@@ -70,30 +83,12 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 <span>Maximo 10</span>
               )}
             </div>
-            <div>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                FECHA INGRESO
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="date"
-                name="fechaIngreso"
-                placeholder="fecha de ingreso"
-                className="fecha"
-                ref={register({ required: true})}
-              />
-            </div>
-            <div>
-            {errors.fechaIngreso && errors.fechaIngreso.type === "required" && (
-                <span>*Campo requerido</span>
-              )}
-            </div>
             
             <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 UNIDAD MEDICA
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon}/>}</label>
               <input
                 type="text"
                 name="unidadMedica"
@@ -109,31 +104,12 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
                 <span>Maximo 50</span>
               )}
             </div>
-            <div>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                DOCTOR
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="text"
-                name="doctor"
-                placeholder="doctor"
-                ref={register({ required: true, maxLength: 50 })}
-              />
-            </div>
-            <div>
-            {errors.doctor && errors.doctor.type === "required" && (
-                <span>*Campo requerido</span>
-              )}
-              {errors.doctor && errors.doctor.type === "maxLength" && (
-                <span>Maximo 50</span>
-              )}
-            </div>
+            
             <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 INICIO INCAPACIDAD
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="date"
                 name="inicioIncapacidad"
@@ -148,30 +124,12 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
             </div>
                
             </div>
-            <div>
-              <InputLabel htmlFor="input-with-icon-adornment">
-                FIN INCAPACIDAD
-              </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
-              <input
-                type="date"
-                name="finIncapacidad"
-                placeholder="fin de incapacidad"
-                className="fecha"
-                ref={register({ required: true})}
-              />
-              <div>
-            {errors.finIncapacidad && errors.finIncapacidad.type === "required" && (
-                <span>*Campo requerido</span>
-              )}
-            </div>
                
-            </div>
             <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 DIAS DE COBERTURA
               </InputLabel>
-              <label>{<AccountCircleIcon color="primary" />}</label>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
               <input
                 type="number"
                 name="diasCobertura"
@@ -189,6 +147,65 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
             </div>
          
         </Grid>
+        <Grid item xs={12} sm={6}>
+        <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                FECHA INGRESO
+              </InputLabel>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
+              <input
+                type="date"
+                name="fechaIngreso"
+                placeholder="fecha de ingreso"
+                className="fecha"
+                ref={register({ required: true})}
+              />
+            </div>
+            <div>
+            {errors.fechaIngreso && errors.fechaIngreso.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+            </div>
+            <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                DOCTOR
+              </InputLabel>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
+              <input
+                type="text"
+                name="doctor"
+                placeholder="doctor"
+                ref={register({ required: true, maxLength: 50 })}
+              />
+            </div>
+            <div>
+            {errors.doctor && errors.doctor.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+              {errors.doctor && errors.doctor.type === "maxLength" && (
+                <span>Maximo 50</span>
+              )}
+            </div>
+            <div>
+              <InputLabel htmlFor="input-with-icon-adornment">
+                FIN INCAPACIDAD
+              </InputLabel>
+              <label>{<AccountCircleIcon className={classes.icon} />}</label>
+              <input
+                type="date"
+                name="finIncapacidad"
+                placeholder="fin de incapacidad"
+                className="fecha"
+                ref={register({ required: true})}
+              />
+              </div>
+              <div>
+            {errors.finIncapacidad && errors.finIncapacidad.type === "required" && (
+                <span>*Campo requerido</span>
+              )}
+            </div>
+
+        </Grid>
       </Grid>
       
      
@@ -196,7 +213,7 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="primary"
-          className={classes.button}
+          className={classes.buttonPrimary}
           endIcon={<SaveIcon/>}
           type="submit"
         >
@@ -205,7 +222,7 @@ function FormLayoutIncapacidades({ onSubmit, currentValues }) {
         <Button
           variant="contained"
           color="secondary"
-          className={classes.button}
+          className={classes.buttonSecondary}
           endIcon={<DeleteIcon />}
           type="reset"
           onClick={() => reset()}

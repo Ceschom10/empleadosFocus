@@ -1,10 +1,28 @@
 import React, { useCallback, useContext, useEffect } from "react";
-import styled, { css } from "styled-components";
 import { db } from "../../../Firebase/firebase";
 import RowIncapacidades from "./RowIncapacidades";
 import { UsersContext } from "../../APIFetching/Context";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
+
+import { withStyles, } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: 'SteelBlue',
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 10,
+  },
+}))(TableCell);
+
 
 const useStyles = makeStyles((theme) => ({
   
@@ -13,30 +31,6 @@ const useStyles = makeStyles((theme) => ({
       width: 110,
   },
 }));
-
-const ButtonAdd = styled.button`
-  &: hover {
-    color: yellow;
-    background-color: #36a149;
-  }
-
-  ${(props) =>
-    props.btnType === "primary" &&
-    css`
-      background-color: #ff1465;
-      color: #fff;
-      font-size: 18px;
-    `}
-
-  ${(props) =>
-    props.btnType === "secondary" &&
-    css`
-      background-color: #4a4bd6;
-      color: #fff;
-      font-size: 20px;
-    `}
-`;
-
 
 
 function ListIncapacidades() {
@@ -68,47 +62,32 @@ function ListIncapacidades() {
 
   return (
     <div className="App-box">
-      <Grid
-        container
-        direction="row"
-        justify="flex-end"
-        alignItems="flex-start"
-      >
-        <ButtonAdd
-          type="button"
-          className={classes.button}
-          onClick={() => setCurrentIncapacidades({})}
-          btnType={currentIncapacidades.id ? "primary" : "secondary"}
-        >
-          Add+
-        </ButtonAdd>
-      </Grid>
-
-      <table>
-        <thead>
-          <tr>
-            <th className="th-css">Codigo</th>
-            <th className="th-css">Fecha ingreso</th>
-            <th className="th-css">Unidad medica</th>
-            <th className="th-css">Doctor</th>
-            <th className="th-css">fecha inicio</th>
-            <th className="th-css">fecha fin</th>
-            <th className="th-css">Dias cobertura</th>
-          </tr>
-        </thead>
-        <tbody>
-          {incapacidades.map((incapacidad) => {
+      <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Cod.</StyledTableCell>
+            <StyledTableCell >F. ingreso</StyledTableCell>
+            <StyledTableCell >Unidad</StyledTableCell>
+            <StyledTableCell >Doctor</StyledTableCell>
+            <StyledTableCell >Inicio Inc</StyledTableCell>
+            <StyledTableCell >Fin Inc</StyledTableCell>
+            <StyledTableCell >Cobertura</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {incapacidades.map((incapacidad) => {
             //{console.log(users)}
             //{console.log(user);}
             return (
-              <RowIncapacidades
-                incapacidad={incapacidad}
-                key={incapacidad.id}
-              />
+              <RowIncapacidades incapacidad={incapacidad} key={incapacidad.id}>
+                {incapacidad}
+              </RowIncapacidades>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+        </Table>
+        </TableContainer>
     </div>
   );
 }
