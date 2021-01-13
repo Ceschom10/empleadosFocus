@@ -103,6 +103,7 @@ function RowIncapacidades({ incapacidad }) {
         {incapacidad.diasCobertura}
       </StyledTableCell>
       <StyledTableCell align="right">
+        <div>
         <Button
           variant="contained"
           color="primary"
@@ -111,6 +112,8 @@ function RowIncapacidades({ incapacidad }) {
         >
           {<CreateIcon className={classes.buttonMod} />}
         </Button>
+        </div>
+        <div>
         <Button
           className={classes.buttonElim}
           variant="contained"
@@ -119,6 +122,9 @@ function RowIncapacidades({ incapacidad }) {
         >
           {<DeleteIcon className={classes.buttonElim}/>}
         </Button>
+        </div>
+        
+       
       </StyledTableCell>
     </StyledTableRow>
   );

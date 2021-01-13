@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     textAlign: "center",
     color: theme.palette.text.secondary,
-    marginTop: 80,
+    marginTop: 95,
   },
 }));
 
@@ -24,7 +24,7 @@ function APIFetchingIncapacidades() {
   return (
     <div className="App-form-users">
         <UsersProvider>
-      <Grid container spacing={3} className={classes.root}>
+      <Grid container spacing={2} className={classes.root}>
         <Grid item >
           <Paper className={classes.paper}>
               <ListIncapacidades />

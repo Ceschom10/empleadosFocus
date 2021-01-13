@@ -13,6 +13,7 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: theme.spacing(14),
+    marginTop: 25,
   },
   paper: {
     padding: theme.spacing(1),

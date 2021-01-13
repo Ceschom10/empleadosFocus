@@ -10,7 +10,7 @@ import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 15
+    marginTop: 12
   },
   buttonPrimary: {
     margin: theme.spacing(1),
@@ -50,8 +50,7 @@ function FormLayout({ onSubmit, currentValues }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={0} >
-        <Grid item xs={12} sm={6}>
-          
+        <Grid item xs={12} sm={6} className={classes.root}>
             <div >
               <input
                 type="text"
@@ -123,7 +122,7 @@ function FormLayout({ onSubmit, currentValues }) {
               )}
             </div>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} className={classes.root}>
             <div>
               <InputLabel htmlFor="input-with-icon-adornment">
                 FECHA DE INGRESO
