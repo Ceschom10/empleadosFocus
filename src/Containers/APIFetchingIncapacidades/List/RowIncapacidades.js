@@ -7,6 +7,26 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
 import swal from "sweetalert";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  buttonMod: {
+    margin: theme.spacing(1),
+    width: 20,
+    background: "#2dd36f",
+    color: "black",
+  },
+  buttonElim: {
+    margin: theme.spacing(1),
+    width: 20,
+    background: "#eb445a",
+    color: "black",
+  },
+  icon: {
+    fontSize: 25,
+  },
+}));
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -61,6 +81,8 @@ function RowIncapacidades({ incapacidad }) {
     });
   };
 
+  const classes = useStyles();
+
   return (
     <StyledTableRow key={incapacidad.id}>
       <StyledTableCell align="right">{incapacidad.codigo}</StyledTableCell>
@@ -81,15 +103,20 @@ function RowIncapacidades({ incapacidad }) {
         {incapacidad.diasCobertura}
       </StyledTableCell>
       <StyledTableCell align="right">
-        <button
-          className="icon-update"
+        <Button
+          variant="contained"
+          className={classes.buttonMod}
           onClick={() => setCurrentIncapacidades(incapacidad)}
         >
-          {<CreateIcon />}
-        </button>
-        <button className="icon-delete" onClick={() => deleteUser(incapacidad)}>
-          {<DeleteIcon />}
-        </button>
+          {<CreateIcon className={classes.buttonMod} />}
+        </Button>
+        <Button
+          className={classes.buttonElim}
+          variant="contained"
+          onClick={() => deleteUser(incapacidad)}
+        >
+          {<DeleteIcon className={classes.buttonElim}/>}
+        </Button>
       </StyledTableCell>
     </StyledTableRow>
   );

@@ -9,6 +9,32 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
 import swal from "sweetalert";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  buttonMod: {
+    margin: theme.spacing(1),
+    width: 20,
+    background: "#2dd36f",
+    color: "black",
+  },
+  buttonElim: {
+    margin: theme.spacing(1),
+    width: 20,
+    background: "#eb445a",
+    color: "black",
+  },
+  buttonInca: {
+    margin: theme.spacing(1),
+    width: 20,
+    background: "#ffc409",
+    color: "black",
+  },
+  icon: {
+    fontSize: 25,
+  },
+}));
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -76,6 +102,8 @@ function Row({ user }) {
     history.push("/incapacidades", setCurrentIncapacidades(cargarIncapacidad));
   };
 
+  const classes = useStyles();
+
   return (
     <StyledTableRow key={user.id}>
       <StyledTableCell align="right">{user.codigo}</StyledTableCell>
@@ -84,15 +112,27 @@ function Row({ user }) {
       <StyledTableCell align="right">{user.puesto}</StyledTableCell>
       <StyledTableCell align="right">{user.dui}</StyledTableCell>
       <StyledTableCell align="right">
-        <button className="icon-update" onClick={() => setCurrent(user)}>
-          {<CreateIcon />}
-        </button>
-        <button className="icon-delete" onClick={() => deleteUser(user)}>
-          {<DeleteIcon />}
-        </button>
-        <button className="icon-inca" onClick={() => llevar()}>
-          {<LocalHospitalIcon />}
-        </button>
+        <Button
+          className={classes.buttonMod}
+          variant="contained"
+          onClick={() => setCurrent(user)}
+        >
+          {<CreateIcon className={classes.icon} />}
+        </Button>
+        <Button
+          className={classes.buttonElim}
+          variant="contained"
+          onClick={() => deleteUser(user)}
+        >
+          {<DeleteIcon className={classes.icon} />}
+        </Button>
+        <Button
+          className={classes.buttonInca}
+          variant="contained"
+          onClick={() => llevar()}
+        >
+          {<LocalHospitalIcon className={classes.icon} />}
+        </Button>
       </StyledTableCell>
     </StyledTableRow>
   );
